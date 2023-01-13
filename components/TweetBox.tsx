@@ -15,7 +15,7 @@ export default function TweetBox() {
 	return (
 		<div className="flex space-x-2 p-5">
 			<Image
-				className="object-cover rounded-full mt-4 opacity-30 h-14 w-14"
+				className="object-cover rounded-full mt-4 opacity-30 h-14 w-auto"
 				src={Sil}
 				alt="profile"
 				height="40"

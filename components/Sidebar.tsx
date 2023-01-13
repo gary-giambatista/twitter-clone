@@ -16,13 +16,7 @@ import SidebarRow from "./SidebarRow";
 export default function Sidebar() {
 	return (
 		<div className="flex flex-col col-span-2 items-center px-4 md:items-start">
-			<Image
-				src={TwitterLogo}
-				alt="twitter"
-				width="40"
-				height="40"
-				className="m-3"
-			/>
+			<Image src={TwitterLogo} alt="twitter" width="40" className="m-3" />
 			<SidebarRow Icon={HomeIcon} title="Home" />
 			<SidebarRow Icon={HashtagIcon} title="Explore" />
 			<SidebarRow Icon={BellIcon} title="Notifications" />
