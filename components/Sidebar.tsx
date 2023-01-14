@@ -35,13 +35,3 @@ export default function Sidebar() {
 		</div>
 	);
 }
-
-//all icons
-// BellIcon,
-// BookmarkIcon,
-// CollectionIcon,
-// DotsCircleHorizontalIcon,
-// HashtagIcon,
-// HomeIcon,
-// MailIcon,
-// UserIcon,
