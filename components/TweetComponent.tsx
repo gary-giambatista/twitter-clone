@@ -31,7 +31,7 @@ export default function TweetComponent({ tweet }: Props) {
 		refreshComments();
 	}, []);
 
-	//helper function to post comments
+	// Function to post comments
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
@@ -46,7 +46,7 @@ export default function TweetComponent({ tweet }: Props) {
 				session?.user?.image ||
 				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeITixUzn4MnrRY18AWpjsQYlIURob4e1-oJ7tKkaAiWdWvbekoaJ1ewx__b5RNefxdo8&usqp=CAU",
 		};
-
+		//sending comment body to the API endpoint
 		const result = await fetch(`/api/addComment`, {
 			body: JSON.stringify(comment),
 			method: "POST",
@@ -64,6 +64,7 @@ export default function TweetComponent({ tweet }: Props) {
 
 	// console.log(comments);
 	return (
+		// Displaying the tweet
 		<div className="flex flex-col space-x-3 border-y p-5 border-gray-100">
 			<div className="flex space-x-3">
 				<img
@@ -111,7 +112,7 @@ export default function TweetComponent({ tweet }: Props) {
 					<ArrowUpTrayIcon className="h-5 w-5" />
 				</div>
 			</div>
-			{/* comment box logic */}
+			{/* comment box logic - for writing comments */}
 			{commentBoxVisible && (
 				<form className="mt-3 flex space-x-3" onSubmit={(e) => handleSubmit(e)}>
 					<input
@@ -130,9 +131,9 @@ export default function TweetComponent({ tweet }: Props) {
 					</button>
 				</form>
 			)}
-
+			{/* Comments */}
 			{comments?.length > 0 && (
-				<div className="my-2 mt-5 max-h-44 space-y-5 overflow-y-scroll border-t border-gray-100 p-5">
+				<div className="my-2 mt-5 max-h-44 space-y-5 overflow-y-scroll border-t border-gray-100 p-5 scrollbar">
 					{comments.map((comment) => (
 						<div key={comment._id} className="relative flex space-x-2">
 							<hr className="absolute left-5 top-10 h-8 border-x border-twitter/20" />

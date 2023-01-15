@@ -14,7 +14,7 @@ import { fetchTweets } from "../utils/fetchTweets";
 interface Props {
 	setTweets: React.Dispatch<React.SetStateAction<Tweet[]>>;
 }
-
+//tweetbox is for posting tweets, including adding images to Tweets
 export default function TweetBox({ setTweets }: Props) {
 	const [input, setInput] = useState<string>("");
 	const [image, setImage] = useState<string>("");
@@ -43,7 +43,8 @@ export default function TweetBox({ setTweets }: Props) {
 				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeITixUzn4MnrRY18AWpjsQYlIURob4e1-oJ7tKkaAiWdWvbekoaJ1ewx__b5RNefxdo8&usqp=CAU",
 			image: image,
 		};
-		//mutate tweet
+		const commentToast = toast.loading("Posting Tweet...");
+		//mutate tweet - sending Tweet body to endpoint
 		const result = await fetch(`/api/addTweet`, {
 			body: JSON.stringify(tweetInfo),
 			method: "POST",
@@ -52,8 +53,9 @@ export default function TweetBox({ setTweets }: Props) {
 
 		const newTweets = await fetchTweets();
 		setTweets(newTweets);
-
-		toast("Tweet Posted", {
+		//dropdown notification with Toast
+		toast.success("Tweet Posted!", {
+			id: commentToast,
 			icon: "✔",
 		});
 		return json;
